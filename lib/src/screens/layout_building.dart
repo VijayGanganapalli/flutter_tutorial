@@ -69,7 +69,7 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
     );
   }
 
-  buildButtonColumn(IconData icon, String label) {
+  Widget buildButtonColumn(IconData icon, String label) {
     Color color = Theme.of(context).primaryColorDark;
     return Column(
       children: <Widget>[
