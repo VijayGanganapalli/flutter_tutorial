@@ -12,6 +12,7 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
       children: <Widget>[
         imageSection(),
         titleSection(),
+        buttonSection(),
       ],
     );
   }
@@ -52,6 +53,39 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
           Text("41"),
         ],
       ),
+    );
+  }
+
+  Widget buttonSection() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          buildButtonColumn(Icons.call, "CALL"),
+          buildButtonColumn(Icons.near_me, "ROUTE"),
+          buildButtonColumn(Icons.share, "SHARE"),
+        ],
+      ),
+    );
+  }
+
+  buildButtonColumn(IconData icon, String label) {
+    Color color = Theme.of(context).primaryColorDark;
+    return Column(
+      children: <Widget>[
+        Icon(icon, color: color),
+        Container(
+          margin: EdgeInsets.only(top: 8.0),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12.0,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
