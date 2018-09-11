@@ -9,7 +9,9 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[Text("Hello World!")],
+      children: <Widget>[
+        Image.asset("images/lake.jpg"),
+      ],
     );
   }
 }
