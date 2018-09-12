@@ -6,6 +6,8 @@ class LayoutBuilding extends StatefulWidget {
 }
 
 class _LayoutBuildingState extends State<LayoutBuilding> {
+  bool _isFavorited = true;
+  int _favoriteCount = 42;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -51,11 +53,22 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
               ],
             ),
           ),
-          Icon(
-            Icons.star,
-            color: Colors.red,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                color: Colors.red,
+                icon:
+                    (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+                onPressed: _toggleFavorite,
+              ),
+              SizedBox(
+                child: Container(
+                  child: Text("$_favoriteCount"),
+                ),
+              ),
+            ],
           ),
-          Text("41"),
         ],
       ),
     );
@@ -104,5 +117,19 @@ class _LayoutBuildingState extends State<LayoutBuilding> {
         softWrap: true,
       ),
     );
+  }
+
+  void _toggleFavorite() {
+    setState(() {
+      // If the lake is currently favorited, unfavorite it.
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+        _isFavorited = false;
+        // Otherwise, favorite it.
+      } else {
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
   }
 }
